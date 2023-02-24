@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .preview{
+            position: absolute;
+            top:50%;
+            left: 0;
+        }
+        .col-4 .border-warning,.col-4 .border-dark{
+            border-width: 3px!important;
+        }
+        .arrow-left{
+            position: absolute;
+            top: 50%;
+            left: 2%;
+            width: 50px;
+            opacity: 50%;
+            transition: .3s;
+        }
+        .arrow-right{
+            position: absolute;
+            top: 50%;
+            right: 2%;
+            width: 50px;
+            opacity: 50%;
+            transition: .3s;
+        }
+        .arrow-left:hover,.arrow-right:hover{
+            opacity: 100%;
+            cursor: pointer;
+        }
+        .d-none{
+            transition: 0.7s;
+        }
+        .d-block{
+            transition: 0.7s;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid mt-5" >
+        <div class="row justify-content-end ">
+            <div class="col-12 postion-relative">
+                <img src="arrow-left.svg" class="bg-white arrow-left" alt="">
+                <img class="w-100 d-block anime" src="img-1.jpeg" alt="">
+                <img class="w-100 d-none anime" src="img-2.jpeg" alt="">
+                <img class="w-100 d-none anime" src="img-3.jpg" alt="">
+                <img class="w-100 d-none anime" src="img-4.jpeg" alt="">
+                <img class="w-100 d-none anime" src="img-5.jpg" alt="">
+                <img src="arrow-right.svg" class="bg-white arrow-right" alt="">
+            </div>
+        </div>
+     
+    </div>
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+    $('document').ready(function(){
+        $('.arrow-left').click(function(){
+           let anime_length=$('.anime').length;
+           for (let i=0;i<anime_length;i++){
+                if($('.anime')[i].classList.contains('d-block')){
+                    $('.anime')[i].classList.remove('d-block');
+                    $('.anime')[i].classList.add('d-none');
+                    
+                    if (i==0){
+                        $('.anime')[anime_length-1].classList.remove('d-none');
+                        $('.anime')[anime_length-1].classList.add('d-block');
+                        console.log('if')
+                        
+                    }
+                    else{
+                        $('.anime')[i-1].classList.remove('d-none');
+                        $('.anime')[i-1].classList.add('d-block');
+                        console.log('else')
+                        
+                    }
+                    break;
+                }
+           }
+        })
+        $('.arrow-right').click(function(){
+           let anime_length=$('.anime').length;
+           for (let i=0;i<anime_length;i++){
+                if($('.anime')[i].classList.contains('d-block')){
+                    $('.anime')[i].classList.remove('d-block');
+                    $('.anime')[i].classList.add('d-none');
+                    
+                    if (i==anime_length-1){
+                        $('.anime')[0].classList.remove('d-none');
+                        $('.anime')[0].classList.add('d-block');
+                        console.log('if')
+                        
+                    }
+                    else{
+                        $('.anime')[i+1].classList.remove('d-none');
+                        $('.anime')[i+1].classList.add('d-block');
+                        console.log('else')
+                        
+                    }
+                    break;
+                }
+           }
+        })
+    })
+    </script>
+</body>
+</html>
